@@ -1,24 +1,53 @@
-import React from 'react';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import ProTip from '../src/ProTip';
-import Link from '../src/Link';
-import Copyright from '../src/Copyright';
+import { useUser } from '../lib/hooks'
+import Layout from '../components/layout'
 
-export default function Index() {
+const Home = () => {
+  const user = useUser()
+
   return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Next.js example
-        </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
-  );
+    <Layout>
+      <h1>Magic Example</h1>
+
+      <p>Steps to test this authentication example:</p>
+
+      <ol>
+        <li>Click Login and enter an email.</li>
+        <li>
+          You'll be redirected to Home. Click on Profile, notice how your
+          session is being used through a token stored in a cookie.
+        </li>
+        <li>
+          Click Logout and try to go to Profile again. You'll get redirected to
+          Login.
+        </li>
+      </ol>
+
+      <p>
+        To learn more about Magic, visit their{' '}
+        <a
+          href="https://docs.magic.link/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          documentation
+        </a>
+        .
+      </p>
+
+      {user && (
+        <>
+          <p>Currently logged in as:</p>
+          <pre>{JSON.stringify(user, null, 2)}</pre>
+        </>
+      )}
+
+      <style jsx>{`
+        li {
+          margin-bottom: 0.5rem;
+        }
+      `}</style>
+    </Layout>
+  )
 }
+
+export default Home

@@ -8,7 +8,12 @@
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "@hapi/iron": "6.0.0",
+    "@magic-sdk/admin": "1.0.0",
+    "cookie": "0.4.0",
+    "magic-sdk": "1.0.1",
+    "swr": "0.1.16"
   },
   "scripts": {
     "dev": "next",
