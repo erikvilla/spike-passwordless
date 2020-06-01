@@ -3,10 +3,21 @@ import Layout from '../components/layout'
 
 const Home = () => {
   const user = useUser()
+  const session = () => {
+    if (!user){
+      return null
+    }
+    return (
+      <>
+        <p>Currently logged in as:</p>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+      </>
+    )
+  }
 
   return (
     <Layout>
-      <h1>Magic Example</h1>
+      <h1>HDI Magic login</h1>
 
       <p>Steps to test this authentication example:</p>
 
@@ -22,24 +33,7 @@ const Home = () => {
         </li>
       </ol>
 
-      <p>
-        To learn more about Magic, visit their{' '}
-        <a
-          href="https://docs.magic.link/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          documentation
-        </a>
-        .
-      </p>
-
-      {user && (
-        <>
-          <p>Currently logged in as:</p>
-          <pre>{JSON.stringify(user, null, 2)}</pre>
-        </>
-      )}
+      {session}
 
       <style jsx>{`
         li {
