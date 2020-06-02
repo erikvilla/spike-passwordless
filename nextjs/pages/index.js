@@ -3,10 +3,8 @@ import Layout from '../components/layout'
 
 const Home = () => {
   const user = useUser()
-  const session = () => {
-    if (!user){
-      return null
-    }
+  const session = (user) => {
+    if (!user) return null
     return (
       <>
         <p>Currently logged in as:</p>
@@ -32,8 +30,9 @@ const Home = () => {
           Login.
         </li>
       </ol>
+      <br></br>
 
-      {session}
+      {session(user)}
 
       <style jsx>{`
         li {
